@@ -13,9 +13,19 @@ export default class App extends React.Component {
       playlistName: 'playlistNameHardCoded',
       playlistTracks: [{name: 'nameTracks', artist: 'artistTracks', album: 'albumTraks', id: 21}, 
       {name: 'nameTracks2', artist: 'artistTracks2', album: 'album2Tracks', id: 22}]
-      }
-  }
+      };
+      this.addTrack = this.addTrack.bind(this);
+    }
   
+  addTrack(track) {
+    let tracks = this.state.playlistTracks;
+    if (tracks.some(element => element.id === track.id)) {
+      return;
+    } else {
+      tracks.push(track);
+      this.setState(tracks);
+    }
+  }
   
   render() {
     return (
@@ -25,7 +35,8 @@ export default class App extends React.Component {
      <SearchBar />
     
     <div className="App-playlist">
-      <SearchResults searchResults={this.state.searchResults}/>
+      <SearchResults searchResults={this.state.searchResults}
+        onAdd={this.addTrack}/>
       <Playlist playlistName={this.state.playlistName} 
         playlistTracks={this.state.playlistTracks}/>
     </div>  
