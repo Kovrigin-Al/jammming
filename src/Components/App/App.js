@@ -17,6 +17,7 @@ export default class App extends React.Component {
       this.addTrack = this.addTrack.bind(this);
       this.removeTrack = this.removeTrack.bind(this);
       this.updatePlaylistName = this.updatePlaylistName.bind(this);
+      this.savePlayList = this.savePlayList.bind(this);
     }
   
   addTrack(track) {
@@ -39,6 +40,10 @@ export default class App extends React.Component {
     this.setState({playlistName: name});
   }
 
+  savePlayList() {
+    const trackURIs = this.state.playlistTracks.map(track => track.uri);
+  }
+
   render() {
     return (
       <div>
@@ -52,7 +57,8 @@ export default class App extends React.Component {
       <Playlist onRemove={this.removeTrack} 
         playlistName={this.state.playlistName} 
         playlistTracks={this.state.playlistTracks}
-        onNameChange={this.updatePlaylistName}/>
+        onNameChange={this.updatePlaylistName}
+        onSave={this.savePlayList}/>
     </div>  
   </div>
 </div>
