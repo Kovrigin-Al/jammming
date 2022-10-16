@@ -46,6 +46,7 @@ export default class App extends React.Component {
   }
 
   search(term) {
+    console.log(term);
   }
 
   render() {
