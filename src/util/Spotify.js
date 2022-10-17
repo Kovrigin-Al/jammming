@@ -66,11 +66,11 @@ export const Spotify = {
           .then((jsonResponse) => {
             const playlistId = jsonResponse.id;
             return fetch(
-              `/v1/users/${userId}/playlists/${playlistId}/tracks`,
-              {
+                `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+                {
                 method: "POST",
                 headers: headers,
-                body: JSON.stringify({ uris: trackURIs }),
+                body: JSON.stringify({ uris: trackURIs })
               }
             );
           });
