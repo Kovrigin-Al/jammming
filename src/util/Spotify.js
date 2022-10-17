@@ -1,6 +1,6 @@
 let accessToken;
 const clientId = "d5f1c7785a9b4f9ea1d3474d4e68f402";
-const redirectUrl = "http://localhost:3000/";
+const redirectUrl = "haker_project.surge.sh";
 
 export const Spotify = {
   getAccessToken() {
